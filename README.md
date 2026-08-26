@@ -1,4 +1,4 @@
-# Agência ScalUp — Landing Page (Consultoria de Mídia Paga)
+# Agência Escalup — Landing Page (Consultoria de Mídia Paga)
 
 Site estático (HTML/CSS/JS puro, **sem etapa de build**).
 Projeto próprio e independente — repositório GitHub, projeto no Cloudflare Pages
