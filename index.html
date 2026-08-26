@@ -266,6 +266,7 @@
 
   /* ---- números / prova ---- */
   .counters{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:44px}
+  .counters--3{grid-template-columns:repeat(3,1fr)}
   .counter .big{
     font-size:clamp(2.2rem,4.4vw,3.4rem);font-weight:800;letter-spacing:-.03em;line-height:1;
     font-variant-numeric:tabular-nums;
@@ -381,6 +382,7 @@
   }
   @media (max-width:680px){
     .grid--4,.grid--3,.grid--2{grid-template-columns:1fr}
+    .counters,.counters--3{grid-template-columns:1fr}
     .footer-grid{grid-template-columns:1fr}
     .header-cta--desktop{display:none}
     .header-cta--mobile{display:inline-flex}
@@ -576,25 +578,19 @@
     <div class="wrap">
       <span class="kicker reveal">[ 06 ] · Prova</span>
       <h2 class="reveal">Alguns números da operação Escalup.</h2>
-      <!-- TROQUE PELOS SEUS NÚMEROS REAIS (valores e descrições) -->
-      <div class="counters">
+      <div class="counters counters--3">
         <div class="counter reveal">
-          <div class="big">R$ [X] mi</div>
-          <span class="unit">em mídia sob gestão</span>
+          <div class="big" data-target="10" data-prefix="+R$ " data-suffix=" mi">+R$ 10 mi</div>
+          <span class="unit">em mídia já gerenciada</span>
           <div class="desc">entre Meta, Google e LinkedIn Ads</div>
         </div>
         <div class="counter reveal">
-          <div class="big">[X]+</div>
+          <div class="big" data-target="50" data-suffix="+">50+</div>
           <span class="unit">operações analisadas</span>
           <div class="desc">em diagnósticos de marketing e vendas</div>
         </div>
         <div class="counter reveal">
-          <div class="big">[X]%</div>
-          <span class="unit">de retenção</span>
-          <div class="desc">dos clientes que estruturam a operação com a gente</div>
-        </div>
-        <div class="counter reveal">
-          <div class="big">[X] anos</div>
+          <div class="big" data-target="5" data-suffix=" anos">5 anos</div>
           <span class="unit">de estrada</span>
           <div class="desc">rodando performance para empresas em crescimento</div>
         </div>
@@ -907,6 +903,33 @@
     revealEls.forEach((el) => io.observe(el));
   } else {
     revealEls.forEach((el) => el.classList.add('in'));
+  }
+
+  /* ---------- contadores (sobem quando a seção entra na tela) ---------- */
+  const fmt = (n) => n.toLocaleString('pt-BR');
+  function runCounters(scope){
+    scope.querySelectorAll('[data-target]').forEach((el) => {
+      const target = parseFloat(el.dataset.target);
+      const prefix = el.dataset.prefix || '';
+      const suffix = el.dataset.suffix || '';
+      const dur = 1400; const start = performance.now();
+      const tick = (now) => {
+        const p = Math.min((now - start) / dur, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = prefix + fmt(Math.round(target * eased)) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+  }
+  const provaSec = document.getElementById('prova');
+  if (provaSec && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if ('IntersectionObserver' in window) {
+      const ioC = new IntersectionObserver(([e]) => {
+        if (e.isIntersecting) { runCounters(provaSec); ioC.disconnect(); }
+      }, {threshold:0.35});
+      ioC.observe(provaSec);
+    }
   }
 
   /* ---------- formulário em etapas ---------- */
