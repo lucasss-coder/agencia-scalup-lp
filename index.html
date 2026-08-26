@@ -264,6 +264,23 @@
   }
   .checklist li::before{content:"✓";color:var(--accent);font-weight:800;flex:0 0 auto;line-height:1.5}
 
+  /* ---- empresas atendidas (marquee) ---- */
+  .logos{margin-top:56px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+  .logos__label{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);text-align:center;margin-bottom:24px}
+  .logos__track{display:flex;gap:14px;width:max-content;animation:marquee 42s linear infinite}
+  .logos__track + .logos__track{animation-direction:reverse;animation-duration:52s;margin-top:14px}
+  .logos:hover .logos__track{animation-play-state:paused}
+  .logo-chip{
+    flex:0 0 auto;
+    display:flex;align-items:center;justify-content:center;
+    min-width:150px;height:60px;padding:0 22px;
+    border:1px solid var(--line);border-radius:var(--radius-sm);
+    background:var(--bg);
+    font-weight:600;color:var(--muted);font-size:.9rem;letter-spacing:.02em;
+  }
+  @keyframes marquee{to{transform:translateX(calc(-50% - 7px))}}
+  @media (prefers-reduced-motion:reduce){.logos__track{animation:none;flex-wrap:wrap;width:auto;justify-content:center}}
+
   .form-shell{max-width:620px;margin-top:40px}
   .progress{margin-bottom:28px}
   .progress__meta{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
@@ -370,8 +387,8 @@
     <img class="brand__logo brand__logo--light" src="assets/logo-scalup-header.png" alt="Agência ScalUp" width="884" height="140" />
     <img class="brand__logo brand__logo--dark" src="assets/logo-scalup-header-dark.png" alt="" aria-hidden="true" width="884" height="140" />
   </a>
-  <a href="#diagnostico" class="btn btn--primary btn--sm header-cta--desktop">Quero analisar minha operação →</a>
-  <a href="#diagnostico" class="btn btn--primary btn--sm header-cta--mobile">Fale conosco →</a>
+  <a href="#diagnostico" class="btn btn--primary btn--sm header-cta--desktop">Quero meu diagnóstico gratuito →</a>
+  <a href="#diagnostico" class="btn btn--primary btn--sm header-cta--mobile">Diagnóstico gratuito →</a>
 </header>
 
 <main id="top">
@@ -389,7 +406,7 @@
         investimento em marketing em oportunidades reais de negócio.
       </p>
       <div class="hero__cta reveal">
-        <a href="#diagnostico" class="btn btn--primary">Quero analisar minha operação →</a>
+        <a href="#diagnostico" class="btn btn--primary">Quero meu diagnóstico gratuito →</a>
         <span class="hero__micro">Diagnóstico inicial da sua operação de marketing e vendas.</span>
       </div>
       <div class="statline reveal">
@@ -497,7 +514,7 @@
         </div>
       </div>
       <div class="reveal" style="margin-top:36px">
-        <a href="#diagnostico" class="btn btn--primary">Quero analisar minha operação →</a>
+        <a href="#diagnostico" class="btn btn--primary">Quero meu diagnóstico gratuito →</a>
       </div>
     </div>
   </section>
@@ -531,6 +548,31 @@
           <span class="num">04</span>
           <h3>O que faz sentido implementar</h3>
           <p>A partir do diagnóstico, definimos a estrutura mais adequada para o momento da sua empresa.</p>
+        </div>
+      </div>
+
+      <!-- EMPRESAS ATENDIDAS — troque os .logo-chip por <img src="assets/clientes/nome.svg" alt="Nome"> -->
+      <div class="logos reveal" aria-label="Empresas atendidas">
+        <div class="logos__label">Empresas que já confiaram na ScalUp</div>
+        <div class="logos__track">
+          <span class="logo-chip">Cliente 01</span><span class="logo-chip">Cliente 02</span>
+          <span class="logo-chip">Cliente 03</span><span class="logo-chip">Cliente 04</span>
+          <span class="logo-chip">Cliente 05</span><span class="logo-chip">Cliente 06</span>
+          <span class="logo-chip">Cliente 07</span><span class="logo-chip">Cliente 08</span>
+          <span class="logo-chip">Cliente 01</span><span class="logo-chip">Cliente 02</span>
+          <span class="logo-chip">Cliente 03</span><span class="logo-chip">Cliente 04</span>
+          <span class="logo-chip">Cliente 05</span><span class="logo-chip">Cliente 06</span>
+          <span class="logo-chip">Cliente 07</span><span class="logo-chip">Cliente 08</span>
+        </div>
+        <div class="logos__track">
+          <span class="logo-chip">Cliente 09</span><span class="logo-chip">Cliente 10</span>
+          <span class="logo-chip">Cliente 11</span><span class="logo-chip">Cliente 12</span>
+          <span class="logo-chip">Cliente 13</span><span class="logo-chip">Cliente 14</span>
+          <span class="logo-chip">Cliente 15</span><span class="logo-chip">Cliente 16</span>
+          <span class="logo-chip">Cliente 09</span><span class="logo-chip">Cliente 10</span>
+          <span class="logo-chip">Cliente 11</span><span class="logo-chip">Cliente 12</span>
+          <span class="logo-chip">Cliente 13</span><span class="logo-chip">Cliente 14</span>
+          <span class="logo-chip">Cliente 15</span><span class="logo-chip">Cliente 16</span>
         </div>
       </div>
     </div>
@@ -722,7 +764,7 @@
         Descubra os principais gargalos da sua operação de marketing e vendas — e as
         oportunidades que podem estar sendo deixadas de lado.
       </p>
-      <div class="reveal"><a href="#diagnostico" class="btn btn--primary">Quero analisar minha operação →</a></div>
+      <div class="reveal"><a href="#diagnostico" class="btn btn--primary">Quero meu diagnóstico gratuito →</a></div>
     </div>
   </section>
 </main>
@@ -766,7 +808,7 @@
 </footer>
 
 <div class="mobile-cta">
-  <a href="#diagnostico" class="btn btn--primary">Quero analisar minha operação →</a>
+  <a href="#diagnostico" class="btn btn--primary">Quero meu diagnóstico gratuito →</a>
 </div>
 
 <script>
