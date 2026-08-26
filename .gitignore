@@ -1,0 +1,27 @@
+# --- Sistema operacional ---
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+Thumbs.db
+desktop.ini
+
+# --- Editores / IDEs ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# --- Node (caso um dia entre etapa de build) ---
+node_modules/
+dist/
+.cache/
+npm-debug.log*
+
+# --- Ferramentas locais / arquivos de trabalho ---
+.claude/
+# cópia usada só no preview do Claude (base64 embutido) - não faz parte do site
+lp-scalup-preview.html
+# imagem original da logo enviada no chat (as versões tratadas estão em assets/)
+WhatsApp Image*.jpeg
