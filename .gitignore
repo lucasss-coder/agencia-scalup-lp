@@ -25,3 +25,6 @@ npm-debug.log*
 lp-scalup-preview.html
 # imagem original da logo enviada no chat (as versões tratadas estão em assets/)
 WhatsApp Image*.jpeg
+
+# pasta com os logos originais de clientes (as versões P&B tratadas estão em assets/clientes/)
+/logo/
