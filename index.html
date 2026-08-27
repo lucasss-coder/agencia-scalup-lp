@@ -12,9 +12,9 @@
   Como Funciona + Diferencial + Formulário + Para Quem É + CTA final.
 
   Pendente:
-   - Formulário: hoje só simula o envio. Plugar endpoint / CRM / webhook no
-     bloco marcado com  // >>> BACKEND  no <script> (ex.: Google Sheets via
-     Apps Script).
+   - Formulário: colar a URL /exec do Apps Script na const APPS_SCRIPT_URL
+     (no <script>). Código do Apps Script: ver apps-script.gs. Enquanto a URL
+     não for colada, o form só simula o envio.
    - Footer: CNPJ, endereço, e-mail e links reais (Instagram / LinkedIn).
   ============================================================================
 -->
@@ -1028,6 +1028,10 @@
   };
   form.querySelectorAll('[data-next]').forEach((b) => b.addEventListener('click', () => { if (current === 2) fillSummary(); }));
 
+  // >>> BACKEND — cole aqui a URL que termina em /exec do seu Apps Script (Google Sheets).
+  //     Enquanto estiver com "COLE_AQUI...", o form só simula o envio.
+  const APPS_SCRIPT_URL = 'COLE_AQUI_A_URL_DO_APPS_SCRIPT';
+
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     if (!validateStep(2)) return;
@@ -1035,16 +1039,27 @@
     if (form.querySelector('[name="website_hp"]').value) return;
 
     const btn = document.getElementById('submitBtn');
+    const btnLabel = btn.textContent;
     btn.disabled = true; btn.textContent = 'Enviando…';
 
-    const payload = Object.fromEntries(new FormData(form).entries());
+    const data = new URLSearchParams(new FormData(form));
+    data.append('origem', location.hostname || 'local');
 
-    // >>> BACKEND: troque este bloco pelo envio real (fetch para seu endpoint / CRM / webhook)
-    // fetch('https://SEU-ENDPOINT', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)})
-    //   .then(r => { if(!r.ok) throw new Error(); done(); })
-    //   .catch(() => { btn.disabled = false; btn.textContent = 'Quero falar com a Escalup →'; alert('Erro ao enviar. Tente novamente.'); });
-    console.log('Lead capturado (simulação):', payload);
-    setTimeout(done, 700);
+    const fail = () => {
+      btn.disabled = false; btn.textContent = btnLabel;
+      alert('Não consegui enviar agora. Tente de novo em instantes.');
+    };
+
+    if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL.lastIndexOf('COLE_AQUI', 0) === 0) {
+      console.warn('APPS_SCRIPT_URL não configurada — envio simulado.', Object.fromEntries(data));
+      setTimeout(done, 600);
+      return;
+    }
+
+    fetch(APPS_SCRIPT_URL, { method: 'POST', body: data })
+      .then((r) => r.json().catch(() => ({ ok: true })))
+      .then((res) => { if (res && res.ok === false) throw new Error(res.error || 'erro'); done(); })
+      .catch(fail);
 
     function done(){
       form.style.display = 'none';
