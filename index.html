@@ -6,7 +6,7 @@
 
 <!--
   ============================================================================
-  Agência Escalup — Landing Page (Operação de Crescimento)
+  Agência Escalup | Landing Page (Operação de Crescimento)
   ----------------------------------------------------------------------------
   Copy oficial inserida. Estrutura: Hero + O Problema + A Solução + Pilares +
   Como Funciona + Diferencial + Formulário + Para Quem É + CTA final.
@@ -438,7 +438,7 @@
       <h2 class="reveal">Sua empresa não precisa de mais volume de leads. Precisa de um <span class="accent">funil de qualificação</span>.</h2>
       <p class="lead reveal" style="margin-top:24px">
         O algoritmo vai buscar o evento que você marcou como sucesso. Se o evento é formulário
-        enviado, ele vai caçar quem preenche formulário — e existe muita gente excelente em
+        enviado, ele vai caçar quem preenche formulário. E existe muita gente excelente em
         preencher formulário que nunca vai comprar de você.
       </p>
       <div class="grid grid--3">
@@ -474,7 +474,7 @@
         <div class="reveal">
           <div class="stack__label">O que fazemos</div>
           <p>Estruturamos e otimizamos a operação de aquisição da sua empresa olhando para
-            o processo completo — não apenas para as campanhas.</p>
+            o processo completo, não apenas para as campanhas.</p>
         </div>
         <div class="reveal">
           <div class="stack__label">Como fazemos</div>
@@ -809,10 +809,10 @@
               <span class="err">Informe seu site ou Instagram.</span>
             </div>
             <dl class="summary" id="summary">
-              <dt>Faturamento</dt><dd data-sum="faturamento">—</dd>
-              <dt>Investimento</dt><dd data-sum="invest">—</dd>
-              <dt>Desafio</dt><dd data-sum="dor">—</dd>
-              <dt>Nome</dt><dd data-sum="nome">—</dd>
+              <dt>Faturamento</dt><dd data-sum="faturamento"></dd>
+              <dt>Investimento</dt><dd data-sum="invest"></dd>
+              <dt>Desafio</dt><dd data-sum="dor"></dd>
+              <dt>Nome</dt><dd data-sum="nome"></dd>
             </dl>
             <label class="consent">
               <input type="checkbox" id="consent" name="consent" required />
@@ -861,7 +861,7 @@
     <div class="wrap">
       <h2 class="reveal">Talvez você não precise investir <span class="edit">mais</span>. Talvez precise investir <span class="accent">melhor</span>.</h2>
       <p class="lead reveal" style="max-width:54ch;margin:0 auto 28px">
-        Descubra os principais gargalos da sua operação de marketing e vendas — e as
+        Descubra os principais gargalos da sua operação de marketing e vendas, e as
         oportunidades que podem estar sendo deixadas de lado.
       </p>
       <div class="reveal"><a href="#diagnostico" class="btn btn--primary">Quero meu diagnóstico →</a></div>
@@ -1033,19 +1033,19 @@
     Object.entries(map).forEach(([k, sel]) => {
       const src = form.querySelector(sel);
       const dst = form.querySelector(`[data-sum="${k}"]`);
-      if (src && dst) dst.textContent = src.value || '—';
+      if (src && dst) dst.textContent = src.value || '';
     });
   };
   form.querySelectorAll('[data-next]').forEach((b) => b.addEventListener('click', () => { if (current === 2) fillSummary(); }));
 
-  // >>> BACKEND — cole aqui a URL que termina em /exec do seu Apps Script (Google Sheets).
+  // >>> BACKEND: cole aqui a URL que termina em /exec do seu Apps Script (Google Sheets).
   //     Enquanto estiver com "COLE_AQUI...", o form só simula o envio.
   const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzqRZHgrlX7r_ztIOrBmPTPYwfPoKV8KIXnst802RJaIgZX73fK-dReSbO1zQYp0kGR/exec';
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     if (!validateStep(2)) return;
-    // honeypot: se preenchido, é bot — aborta em silêncio
+    // honeypot: se preenchido, é bot: aborta em silêncio
     if (form.querySelector('[name="website_hp"]').value) return;
 
     const btn = document.getElementById('submitBtn');
@@ -1061,7 +1061,7 @@
     };
 
     if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL.lastIndexOf('COLE_AQUI', 0) === 0) {
-      console.warn('APPS_SCRIPT_URL não configurada — envio simulado.', Object.fromEntries(data));
+      console.warn('APPS_SCRIPT_URL não configurada, envio simulado.', Object.fromEntries(data));
       setTimeout(done, 600);
       return;
     }
