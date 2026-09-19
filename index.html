@@ -251,33 +251,6 @@
     border:1px solid var(--line);border-radius:var(--radius-sm);
     font-family:var(--mono);font-size:.85rem;color:var(--muted);line-height:1.7;
   }
-  /* ---- [02] Comparativo: mídia comum x metodologia Scalup ---- */
-  .flow{border:1px solid var(--line);border-radius:var(--radius);padding:24px;background:var(--bg)}
-  .flow__title{
-    display:block;margin-bottom:18px;
-    font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-2);
-  }
-  .flow__steps{list-style:none;display:flex;flex-direction:column}
-  .flow__steps li{
-    position:relative;padding:12px 14px;text-align:center;
-    border:1px solid var(--line);border-radius:var(--radius-sm);
-    background:var(--bg-alt);font-size:.92rem;font-weight:600;line-height:1.3;
-  }
-  .flow__steps li + li{margin-top:26px}
-  .flow__steps li + li::before{
-    content:"↓";position:absolute;left:50%;top:-23px;transform:translateX(-50%);
-    font-family:var(--mono);font-size:1.05rem;font-weight:700;color:var(--muted-2);
-  }
-  .flow--old .flow__steps li:last-child{color:var(--danger);border-color:rgba(210,67,37,.35);background:rgba(210,67,37,.06)}
-  .flow--new{
-    border-color:rgba(14,159,82,.5);
-    background:linear-gradient(180deg,rgba(47,232,114,.07),transparent 70%),var(--bg);
-    box-shadow:0 8px 26px rgba(14,159,82,.1);
-  }
-  .flow--new .flow__title{color:var(--accent)}
-  .flow--new .flow__steps li{border-color:rgba(14,159,82,.3);background:var(--bg)}
-  .flow--new .flow__steps li + li::before{color:var(--accent)}
-  .flow--new .flow__steps li:last-child{background:linear-gradient(120deg,var(--accent-2),var(--accent-bright));color:#04150b;border-color:transparent}
   .punch--lg{margin-top:44px;padding-left:20px;border-left:3px solid var(--accent);max-width:66ch}
   .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px;max-width:640px}
   .chip{
@@ -482,27 +455,6 @@
           <span class="num">03</span>
           <h3>Custo de aquisição alto</h3>
           <p>Verba desperdiçada gerando métricas de vaidade em vez de reuniões qualificadas.</p>
-        </div>
-      </div>
-
-      <div class="grid grid--2 flows">
-        <div class="flow flow--old reveal">
-          <span class="flow__title">Mídia comum</span>
-          <ol class="flow__steps">
-            <li>Anúncio</li>
-            <li>Form simples</li>
-            <li>Lead barato</li>
-            <li>Vendas frustradas</li>
-          </ol>
-        </div>
-        <div class="flow flow--new reveal">
-          <span class="flow__title">Metodologia Scalup</span>
-          <ol class="flow__steps">
-            <li>Anúncio</li>
-            <li>Funil de qualificação</li>
-            <li>Venda no CRM</li>
-            <li>Feedback de dados p/ mídia</li>
-          </ol>
         </div>
       </div>
 
