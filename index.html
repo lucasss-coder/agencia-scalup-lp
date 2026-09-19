@@ -251,6 +251,42 @@
     border:1px solid var(--line);border-radius:var(--radius-sm);
     font-family:var(--mono);font-size:.85rem;color:var(--muted);line-height:1.7;
   }
+  /* ---- [02] Comparativo: fluxo tradicional x Funil de Qualificação ---- */
+  .flows{display:grid;gap:16px;margin-top:40px}
+  .flow{border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;background:var(--bg)}
+  .flow__title{
+    display:block;margin-bottom:16px;
+    font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-2);
+  }
+  .flow__steps{list-style:none;display:flex;align-items:stretch}
+  .flow__steps li{
+    flex:1 1 0;position:relative;display:flex;align-items:center;justify-content:center;
+    padding:12px 14px;border:1px solid var(--line);border-radius:var(--radius-sm);
+    background:var(--bg-alt);font-size:.88rem;font-weight:600;line-height:1.3;text-align:center;
+  }
+  .flow__steps li + li{margin-left:28px}
+  .flow__steps li + li::before{
+    content:"→";position:absolute;left:-23px;top:50%;transform:translateY(-50%);
+    font-family:var(--mono);font-size:1.05rem;font-weight:700;color:var(--muted-2);
+  }
+  .flow__cap{margin-top:14px;font-size:.88rem;color:var(--muted)}
+  .flow--old .flow__steps li:last-child{color:var(--danger);border-color:rgba(210,67,37,.35);background:rgba(210,67,37,.06)}
+  .flow--new{
+    border-color:rgba(14,159,82,.5);
+    background:linear-gradient(180deg,rgba(47,232,114,.07),transparent 70%),var(--bg);
+    box-shadow:0 8px 26px rgba(14,159,82,.1);
+  }
+  .flow--new .flow__title{color:var(--accent)}
+  .flow--new .flow__steps li{border-color:rgba(14,159,82,.3);background:var(--bg)}
+  .flow--new .flow__steps li + li::before{color:var(--accent)}
+  .flow--new .flow__steps li:last-child{background:linear-gradient(120deg,var(--accent-2),var(--accent-bright));color:#04150b;border-color:transparent}
+  .flow--new .flow__cap{color:var(--ink);font-weight:500}
+  .punch--lg{margin-top:44px;padding-left:20px;border-left:3px solid var(--accent);max-width:66ch}
+  @media (max-width:820px){
+    .flow__steps{flex-direction:column}
+    .flow__steps li + li{margin-left:0;margin-top:26px}
+    .flow__steps li + li::before{content:"↓";left:50%;top:-22px;transform:translateX(-50%)}
+  }
   .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px;max-width:640px}
   .chip{
     font-family:var(--mono);font-size:.8rem;letter-spacing:.05em;
@@ -433,26 +469,67 @@
   <!-- ==================== 02 · O PROBLEMA ==================== -->
   <section class="section" id="identificacao">
     <div class="wrap">
-      <span class="kicker reveal">[ 02 ] · O problema</span>
-      <h2 class="reveal">O problema nem sempre está no <span class="accent">anúncio</span>.</h2>
+      <span class="kicker reveal">[ O diagnóstico da operação ]</span>
+      <h2 class="reveal">Sua empresa não precisa de mais volume de leads. Precisa de um <span class="accent">Funil de Qualificação</span>.</h2>
       <div class="prose reveal" style="margin-top:24px">
-        <p>Você pode aumentar o investimento, testar novos públicos e produzir mais criativos.</p>
-        <p>Mas se a página não converte, o tracking não funciona, os dados não são confiáveis
-          ou o comercial não transforma oportunidades em vendas, mais investimento só aumenta
-          o desperdício.</p>
+        <p>Ao analisar operações de crescimento que estagnam, identificamos quase sempre a mesma
+          raiz: a empresa até consegue gerar volume de cadastros, mas o comercial não fecha nem
+          10% deles.</p>
+        <p>As plataformas de anúncios são otimizadas para entregar o que a sua estrutura pede. Se a
+          sua operação apenas avisa a Meta ou o Google que um formulário foi preenchido, o algoritmo
+          busca a pessoa mais barata para cadastrar — e não a pessoa certa para comprar.</p>
       </div>
       <div class="grid grid--3">
-        <div class="card reveal"><span class="num">01</span><p>A página não converte o tráfego que você paga.</p></div>
-        <div class="card reveal"><span class="num">02</span><p>O tracking falha e os dados não são confiáveis.</p></div>
-        <div class="card reveal"><span class="num">03</span><p>O comercial não transforma oportunidade em venda.</p></div>
+        <div class="card reveal">
+          <span class="num">01</span>
+          <h3>O volume improdutivo</h3>
+          <p>Gerar cadastros sem filtro adequado só sobrecarrega a equipe de vendas. O comercial perde
+            horas tentando contato com curiosos, enquanto oportunidades com orçamento real esfriam no pipeline.</p>
+        </div>
+        <div class="card reveal">
+          <span class="num">02</span>
+          <h3>O algoritmo cego (sem feedback de CRM)</h3>
+          <p>Sem enviar os dados de conversão do seu CRM de volta para as plataformas de anúncios, a
+            inteligência de mídia continua totalmente cega. As campanhas precisam saber exatamente quem
+            avançou no funil, agendou reunião e fechou contrato.</p>
+        </div>
+        <div class="card reveal">
+          <span class="num">03</span>
+          <h3>O desperdício de verba em mídia</h3>
+          <p>Investir em tráfego sem uma arquitetura de qualificação refinada é queimar caixa. Toda a
+            verba precisa ser otimizada para impactar e atrair exclusivamente o seu Perfil de Cliente Ideal (ICP).</p>
+        </div>
       </div>
-      <p class="cycle reveal">
-        Investe mais → gera mais leads → o comercial reclama da qualidade → as vendas não
-        acompanham → aumenta de novo a verba. E o problema continua.
-      </p>
-      <p class="punch reveal">
-        Crescimento não acontece quando cada parte trabalha isolada. Acontece quando
-        marketing, dados, conversão e vendas <span class="accent">trabalham na mesma direção</span>.
+
+      <div class="flows">
+        <div class="flow flow--old reveal">
+          <span class="flow__title">Fluxo tradicional</span>
+          <ol class="flow__steps">
+            <li>Anúncio</li>
+            <li>Formulário simples</li>
+            <li>Volume de leads</li>
+            <li>Comercial sobrecarregado</li>
+            <li>Baixa conversão</li>
+          </ol>
+          <p class="flow__cap">O algoritmo busca quem é mais barato.</p>
+        </div>
+        <div class="flow flow--new reveal">
+          <span class="flow__title">Operação Scalup · Funil de Qualificação</span>
+          <ol class="flow__steps">
+            <li>Anúncio</li>
+            <li>Funil de Qualificação</li>
+            <li>Lead no ICP</li>
+            <li>Venda no CRM</li>
+            <li>Feedback de dados p/ mídia</li>
+          </ol>
+          <p class="flow__cap">O algoritmo passa a buscar quem realmente compra.</p>
+        </div>
+      </div>
+
+      <p class="punch punch--lg reveal">
+        Volume de lead sem qualificação é apenas <span class="accent">custo operacional mascarado de resultado</span>.
+        Na Scalup, estruturamos a arquitetura de dados e o Funil de Qualificação necessários para
+        transformar campanhas de anúncios em uma máquina previsível de reuniões e negócios fechados.
       </p>
     </div>
   </section>
