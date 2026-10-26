@@ -49,6 +49,9 @@
     --lime-a:#93fe02;          /* gradiente da marca: início */
     --lime-b:#e6ff4b;          /* gradiente da marca: fim */
     --on-lime:#0b1200;         /* texto sobre preenchimento lima */
+    --graphite:#1e1c1d;        /* carvão da marca: fundos escuros */
+    --graphite-deep:#171516;
+    --graphite-lift:#262324;
     --danger:#d24325;
 
     --radius:14px;
@@ -85,7 +88,7 @@
   .section--dark{
     background:
       radial-gradient(ellipse 70% 60% at 50% 0%, rgba(147,254,2,.10), transparent 70%),
-      #000;
+      var(--graphite);
     color:var(--on-dark);
     box-shadow:inset 0 1px 0 rgba(147,254,2,.22);
     --accent:var(--accent-bright);
@@ -157,7 +160,7 @@
     position:fixed;inset:0 0 auto 0;z-index:100;
     display:flex;align-items:center;justify-content:space-between;
     padding:12px var(--gutter);
-    background:rgba(10,12,15,.5);
+    background:rgba(30,28,29,.55);
     backdrop-filter:saturate(1.5) blur(14px);
     -webkit-backdrop-filter:saturate(1.5) blur(14px);
     border-bottom:1px solid transparent;
@@ -175,7 +178,7 @@
     padding-top:clamp(130px,18vw,190px);padding-bottom:var(--section-y);text-align:center;
     background:
       radial-gradient(ellipse 90% 62% at 50% -12%, rgba(147,254,2,.22), transparent 62%),
-      linear-gradient(180deg, #0f1113 0%, #070809 100%);
+      linear-gradient(180deg, var(--graphite-lift) 0%, var(--graphite-deep) 100%);
     color:var(--on-dark);
     --accent:var(--accent-bright);
     --ink:var(--on-dark);
@@ -346,7 +349,7 @@
   .cta-final{text-align:center}
   .cta-final h2{margin-bottom:20px;max-width:24ch;margin-inline:auto}
 
-  .site-footer{background:#000;border-top:1px solid var(--line-dark);color:rgba(255,255,255,.7);padding-block:64px 40px}
+  .site-footer{background:var(--graphite);border-top:1px solid var(--line-dark);color:rgba(255,255,255,.7);padding-block:64px 40px}
   .site-footer a:hover{color:#fff}
   .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px}
   .footer-grid h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2);margin-bottom:14px;font-weight:500}
