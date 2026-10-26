@@ -28,3 +28,6 @@ WhatsApp Image*.jpeg
 
 # pasta com os logos originais de clientes (as versões P&B tratadas estão em assets/clientes/)
 /logo/
+
+# pacote de identidade visual (fontes, mockups, AI/PDF); o que o site usa está em assets/
+/Identidade Visual/
